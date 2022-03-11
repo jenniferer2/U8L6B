@@ -44,18 +44,14 @@ public class Encryptor {
                     letterBlock[r][c] = str.substring(i, i + 1);
                     i++;
                 }
-            }
-        }
-        if (str.length() < numRows * numCols) {
-            for (int r = 0; r < letterBlock.length; r++) {
-                for (int c = 0; c < letterBlock[0].length; c++) {
-                    if (letterBlock[r][c] == null) {
-                        letterBlock[r][c] = "A";
-                    }
+                else {
+                    letterBlock[r][c] = "A";
                 }
             }
-
         }
+
+
+
     }
 
     /**
@@ -87,20 +83,46 @@ public class Encryptor {
     public String encryptMessage(String message)
     {
 
-       String result = "";
-  ;
-       for (int i = 0; i < message.length(); i = numRows*numCols + i ) {
-           fillBlock(message.substring(i));
-           result = result + encryptBlock();
+        String result = "";
+        ;
+        for (int i = 0; i < message.length(); i = numRows*numCols + i ) {
+            fillBlock(message.substring(i));
+            result = result + encryptBlock();
 
 
-       }
+        }
 
 
         return result;
 
 
     }
+    /**  Decrypts an encrypted message. All filler 'A's that may have been
+     *   added during encryption will be removed, so this assumes that the
+     *   original message (BEFORE it was encrypted) did NOT end in a capital A!
+     *
+     *   NOTE! When you are decrypting an encrypted message,
+     *         be sure that you have initialized your Encryptor object
+     *         with the same row/column used to encrypted the message! (i.e.
+     *         the “encryption key” that is necessary for successful decryption)
+     *         This is outlined in the precondition below.
+     *
+     *   Precondition: the Encryptor object being used for decryption has been
+     *                 initialized with the same number of rows and columns
+     *                 as was used for the Encryptor object used for encryption.
+     *
+     *   @param encryptedMessage  the encrypted message to decrypt
+     *
+     *   @return  the decrypted, original message (which had been encrypted)
+     *
+     *   TIP: Feel free to create other helper methods as you see fit
+     *        (e.g. a method to decrypt each section of the decrypted message)
+     */
+    public String decryptMessage(String encryptedMessage)
+    {
+
+
+    }
+
 
 }
-
