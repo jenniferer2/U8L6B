@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class Encryptor {
     /**
      * A two-dimensional array of single-character strings, instantiated in the constructor
@@ -84,7 +86,6 @@ public class Encryptor {
     {
 
         String result = "";
-        ;
         for (int i = 0; i < message.length(); i = numRows*numCols + i ) {
             fillBlock(message.substring(i));
             result = result + encryptBlock();
@@ -120,9 +121,65 @@ public class Encryptor {
      */
     public String decryptMessage(String encryptedMessage)
     {
+        String result = "";
+        String h = encryptedMessage;
+        for (int i = 0; i < encryptedMessage.length(); i =  numRows*numCols + i) {
 
+
+         String s = encryptedMessage.substring(i, numRows*numCols + i);
+          result = result + decrypt2(s);
+
+}
+        result = removeA(result);
+
+
+        return result;
 
     }
 
+    public String decrypt2 (String en) {
+        String x [][] = new String [numRows][numCols] ;
+        int i = 0;
+        for (int c = 0; c < numCols; c++) {
+            for (int r = 0; r < numRows; r++) {
 
+                    x[r][c] = en.substring(i, i + 1);
+                    i++;
+
+            }
+        }
+        String res = "";
+
+        for (int r = 0; r < x.length;r++) {
+            for (int c = 0; c < x[0].length; c++) {
+
+                    res = res + x[r][c];
+
+
+            }
+        }
+
+        return res;
+
+    }
+    public String removeA (String d) {
+        int g =0;
+        String newn = d;
+        String hold = newn.substring(newn.length()-1);
+
+        while(hold.equals("A")) {
+            hold = newn.substring(newn.length() -1);
+            if (hold.equals("A")) {
+                newn = newn.substring(0, newn.length()-1);
+            }
+
+
+        }
+        return newn;
+
+
+
+
+
+}
 }
